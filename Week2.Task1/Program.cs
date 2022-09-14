@@ -8,5 +8,6 @@ float scorePhisics = 100; //Баллы по физике
 Console.WriteLine($"Hi, my name is {fullName}.");
 Console.WriteLine($"I am {age} years old.");
 Console.WriteLine($"contact email: {email}.");
-Console.WriteLine($"My scores for programming, physics and math are {scoreProgramming}, {scoreMath}, {scorePhisics} respectivly.");
+Console.WriteLine($"My scores for programming, physics and math are " +
+    $"{scoreProgramming}, {scoreMath}, {scorePhisics} respectivly.");
 Console.ReadKey(true);
