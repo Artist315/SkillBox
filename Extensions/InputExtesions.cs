@@ -8,18 +8,6 @@ namespace Extensions
 {
     public static class InputExtesions
     {
-        public static T ReadInputClass<T>(string message = null) where T : class
-        {
-            string input = Console.ReadLine();
-
-            while (!(input is T))
-            {
-                Console.WriteLine("Введите длину последовательности");
-            }
-
-            return input as T;
-        }
-
         public static int ReadIntInput(string message = null)
         {
             Console.WriteLine($"{message}");
