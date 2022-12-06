@@ -19,38 +19,24 @@ for (int i = 0; i < rowN; i++)
 }
 Console.Write("\n");
 
-for (int i = 0; i < rowN; i++)
-{
-    for (int j = 0; j < columnN; j++)
-    {
-        Console.Write($"{matrixA[i, j]} \t");
-    }
-    Console.Write("\n");
-}
-Console.Write("\n");
-
-for (int i = 0; i < rowN; i++)
-{
-    for (int j = 0; j < columnN; j++)
-    {
-        Console.Write($"{matrixB[i, j]} \t");
-    }
-    Console.Write("\n");
-}
-Console.Write("\n");
-
-
+PrintMatrix(matrixA, rowN, columnN);
+PrintMatrix(matrixB, rowN, columnN);
 Console.WriteLine($"Sum of maxrix is:");
-
-for (int i = 0; i < rowN; i++)
-{
-    for (int j = 0; j < columnN; j++)
-    {
-        Console.Write($"{matrixSum[i, j]} \t");
-    }
-    Console.Write("\n");
-}
+PrintMatrix(matrixSum, rowN, columnN);
 
 Console.Write("\n");
 
 Console.ReadKey();
+
+static void PrintMatrix(int[,] matrix, int rowN, int columnN)
+{
+    for (int i = 0; i < rowN; i++)
+    {
+        for (int j = 0; j < columnN; j++)
+        {
+            Console.Write($"{matrix[i, j]} \t");
+        }
+        Console.Write("\n");
+    }
+    Console.Write("\n");
+}
