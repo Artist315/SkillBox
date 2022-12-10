@@ -18,5 +18,12 @@ namespace Extensions
             }
             return input;
         }
+
+        public static string ReadStringInput(string message = null)
+        {
+            Console.WriteLine($"{message}");
+
+            return Console.ReadLine();
+        }
     }
 }
