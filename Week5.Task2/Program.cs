@@ -10,6 +10,8 @@ OutputExtesions.PrintArray(revertedSentence);
 
 Console.ReadKey();
 
+
+
 static string[] ReversWords(string inputString)
 {
     var stringArray = inputString.Split(' ');
