@@ -31,7 +31,7 @@ static string[] SplitText(string text)
 
     string cuurentRow = string.Empty;
     int i = 0;
-    var array = new string[text.Count(x => x == ' ')];
+    var array = new string[text.Count(x => x == ' ') + 1];
     foreach (var item in text)
     {
 
@@ -45,7 +45,10 @@ static string[] SplitText(string text)
             i++;
             cuurentRow = string.Empty;
         }
-
+    }
+    if (cuurentRow != string.Empty)
+    {
+        array[i] = (cuurentRow);
     }
     return array;
 }
