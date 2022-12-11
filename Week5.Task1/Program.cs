@@ -4,7 +4,7 @@
 //asdaww awdadsdw 123 123 dqwea a a d 23 ea asdqw    asd wqe asd daw  asdwqad 
 var inputString = InputExtesions.ReadStringInput("Введите строку");
 
-var stringArray = inputString.Split(' ');
+var stringArray = SplitText(inputString);
 
 OutputExtesions.PrintArray(stringArray);
 
@@ -12,18 +12,21 @@ OutputExtesions.PrintArray(stringArray);
 
 static string[] SplitText(string text)
 {
+
     string cuurentRow = string.Empty;
-    var array = new string[0];
+    int i = 0;
+    var array = new string[text.Count(x => x == ' ')];
     foreach (var item in text)
     {
         
         if (item != ' ')
         {
-            cuurentRow.Append(item);
+            cuurentRow += item;
         }
         else
         {
-            array.Append(cuurentRow);
+            array[i] = (cuurentRow);
+            i++;
             cuurentRow = string.Empty;
         }
 
