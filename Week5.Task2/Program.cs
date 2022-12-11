@@ -14,7 +14,7 @@ Console.ReadKey();
 
 static string[] ReversWords(string inputString)
 {
-    var stringArray = inputString.Split(' ');
+    var stringArray = SplitText(inputString);
 
     string[] outputArray = new string[stringArray.Length];
     for (int i = stringArray.Length-1; i >= 0; i--)
@@ -23,4 +23,25 @@ static string[] ReversWords(string inputString)
     }
     
     return outputArray;
+}
+
+static string[] SplitText(string text)
+{
+    string cuurentRow = string.Empty;
+    var array = new string[0];
+    foreach (var item in text)
+    {
+
+        if (item != ' ')
+        {
+            cuurentRow.Append(item);
+        }
+        else
+        {
+            array.Append(cuurentRow);
+            cuurentRow = string.Empty;
+        }
+
+    }
+    return array;
 }

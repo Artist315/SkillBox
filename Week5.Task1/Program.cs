@@ -7,3 +7,26 @@ var inputString = InputExtesions.ReadStringInput("Введите строку");
 var stringArray = inputString.Split(' ');
 
 OutputExtesions.PrintArray(stringArray);
+
+
+
+static string[] SplitText(string text)
+{
+    string cuurentRow = string.Empty;
+    var array = new string[0];
+    foreach (var item in text)
+    {
+        
+        if (item != ' ')
+        {
+            cuurentRow.Append(item);
+        }
+        else
+        {
+            array.Append(cuurentRow);
+            cuurentRow = string.Empty;
+        }
+
+    }
+    return array;
+}
