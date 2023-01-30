@@ -46,5 +46,24 @@ namespace Extensions
 
             return Console.ReadLine();
         }
+
+        public static string ReadStringInput(bool allowEmpty, string message = null)
+        {
+            Console.WriteLine($"{message}");
+            string input;
+            if (!allowEmpty)
+            {
+                while (string.IsNullOrEmpty(input = Console.ReadLine()))
+                {
+                    Console.WriteLine($"недопустима пустая строка");
+                }
+            }
+            else
+            {
+                input = Console.ReadLine();
+            }
+
+            return input;
+        }
     }
 }
