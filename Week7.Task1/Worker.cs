@@ -13,7 +13,7 @@ namespace Week7.Task1
                 CreatedAt = Convert.ToDateTime(splitedInput[1]);
                 FullName = splitedInput[2];
                 Age = Convert.ToInt32(splitedInput[3]);
-                Higth = float.Parse(splitedInput[4]);
+                Higth = Convert.ToInt32(splitedInput[4]);
                 DateOfBirth = Convert.ToDateTime(splitedInput[5]);
                 PlaceOfBirth = splitedInput[6];
             }
@@ -27,11 +27,15 @@ namespace Week7.Task1
         public DateTime CreatedAt { get; set; }
         public string FullName { get; set; }
         public int Age { get; set; }
-        public float Higth { get; set; }
+        public int Higth { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string PlaceOfBirth { get; set; }
 
         public override string ToString()
+        {
+            return $"{Id} {CreatedAt} {FullName} {Age} {Higth} {DateOfBirth.ToShortDateString()} {PlaceOfBirth}";
+        }
+        public string ToStoreFormat()
         {
             return $"{Id}#{CreatedAt}#{FullName}#{Age}#{Higth}#{DateOfBirth.ToShortDateString()}#{PlaceOfBirth}";
         }

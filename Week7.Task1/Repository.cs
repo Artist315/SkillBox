@@ -13,14 +13,20 @@ namespace Week7.Task1
             return input.ToArray();
         }
 
-        public Worker GetWorkerById(int id)
+        public bool GetWorkerById(int id, out Worker worker)
         {
             var input = ReadFile();
 
-            return input.FirstOrDefault(x => x.Id == id);
+            if (input.Any(x => x.Id == id))
+            {
+                worker = input.FirstOrDefault(x => x.Id == id);
+                return true;
+            }
+            worker = new Worker();
+            return false;
         }
 
-        public void DeleteWorker(int id)
+        public void DeleteWorkerById(int id)
         {
             var input = ReadFile();
 
@@ -42,6 +48,9 @@ namespace Week7.Task1
             CreateIfFileNotExists();
 
             WriteToFile(worker);
+
+            _workers.Clear();
+            _workers = GetAllWorkers().ToList();
         }
 
         public Worker[] GetWorkersBetweenTwoDates(DateTime dateFrom, DateTime dateTo)
@@ -49,6 +58,13 @@ namespace Week7.Task1
             var input = ReadFile();
 
             return input.Where(x => x.CreatedAt > dateFrom && x.CreatedAt < dateTo).ToArray();
+        }
+
+        public void Clear()
+        {
+            _workers.Clear();
+            File.Delete(_fileName);
+
         }
 
         #region PrivateFunctions
@@ -89,15 +105,36 @@ namespace Week7.Task1
             return stringResult?.Select(x => new Worker(x)).ToList() ?? new List<Worker>();
         }
 
+        public List<Worker> GetWorkerByCreatedAt(string dateFromRaw, string dateToRaw)
+        {
+            try
+            {
+                DateTime dateFrom = Convert.ToDateTime(dateFromRaw);
+                DateTime dateTo = Convert.ToDateTime(dateToRaw);
+
+                return GetByDate(dateFrom, dateTo);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Неправильный формат дат");
+                return new List<Worker>();
+            }
+        }
+
+        private List<Worker> GetByDate(DateTime dateFrom, DateTime dateTo)
+        {
+            var input = ReadFile();
+            var result = input.Where(x => x.CreatedAt > dateFrom && x.CreatedAt < dateTo).ToList();
+            return result;
+        }
+
         private void WriteToFile(Worker worker)
         {
             using (StreamWriter writer = new StreamWriter(_fileName, true))
             {
-                writer.WriteLine(worker.ToString());
+                writer.WriteLine(worker.ToStoreFormat());
                 writer.Flush();
             }
-
-            _workers = GetAllWorkers().ToList();
         }
 
         public void SetDirectory(string fileName)
