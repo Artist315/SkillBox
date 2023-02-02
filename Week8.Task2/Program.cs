@@ -8,6 +8,8 @@ PrintTephoneBook();
 
 FindByName(InputExtesions.ReadStringInput("Найдите номера по имени"));
 
+#region Methods
+
 void FindByName(string name)
 {
     if (telephoneBook.TryGetValue(name, out List<string> value))
@@ -70,3 +72,5 @@ void PrintTephoneBook()
         Console.WriteLine($"{item.Key} номера: {values}");
     }
 }
+
+#endregion
