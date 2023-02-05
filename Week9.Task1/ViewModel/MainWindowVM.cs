@@ -10,9 +10,40 @@ namespace Week9.Task1.ViewModel
         public MainWindowVM()
         {
             SplitLineCommand = new RelayCommand(o => SplitLine());
+            RevertLineCommand = new RelayCommand(o => RevertLine());
         }
 
         #region Task2 revert line
+        private void RevertLine()
+        {
+            var copy = new List<string>(SplittedElements);
+            copy.Reverse();
+            RevertedLine = string.Join(", ", copy);
+        }
+        public ICommand RevertLineCommand { get; set; }
+
+        private string _revertedLine;
+        public string RevertedLine
+        {
+            get
+            {
+                return _revertedLine;
+            }
+            private set
+            {
+                _revertedLine = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
+        #region Task1 split line
+        private void SplitLine()
+        {
+            SplittedElements = Input.Split(" ").Where(x => !string.IsNullOrEmpty(x)).ToList();
+        }
+        public ICommand SplitLineCommand { get; set; }
+
         private string _input;
         public string Input
         {
@@ -23,27 +54,6 @@ namespace Week9.Task1.ViewModel
             set
             {
                 _input = value;
-            }
-        }
-        #endregion
-
-        #region Task1 split line
-        private void SplitLine()
-        {
-            SplittedElements = InputTask1.Split(" ").ToList();
-        }
-        public ICommand SplitLineCommand { get; set; }
-
-        private string _inputTask1;
-        public string InputTask1
-        {
-            get
-            {
-                return _inputTask1;
-            }
-            set
-            {
-                _inputTask1 = value;
             }
         }
         private List<string> _splittedElements = new List<string>();
