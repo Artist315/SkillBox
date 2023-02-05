@@ -48,7 +48,7 @@
                 Margin="5"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding InputTask1, UpdateSourceTrigger=PropertyChanged}"
                 TextWrapping="Wrap" />
             <Button
                 Grid.Row="2"
