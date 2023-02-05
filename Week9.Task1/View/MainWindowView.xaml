@@ -9,155 +9,83 @@
     WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Margin="10"
+            HorizontalAlignment="Center"
+            FontSize="40"
+            Text="Разделение строки на слова." />
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5"
+            HorizontalAlignment="Left"
+            Text="Введите строку" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="0"
+            MinHeight="30"
+            Margin="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            MinWidth="70"
+            MinHeight="30"
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Command="{Binding SplitLineCommand}"
+            Content="Split" />
 
-            <TextBlock
-                Grid.Row="0"
-                Grid.ColumnSpan="2"
-                Margin="10"
-                HorizontalAlignment="Center"
-                FontSize="40"
-                Text="Разделение строки на слова." />
+        <TextBlock
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Margin="10"
+            Text="Отдельные слова:" />
 
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="5"
-                HorizontalAlignment="Left"
-                Text="Введите строку" />
-            <TextBox
-                Grid.Row="2"
-                Grid.Column="0"
-                MinHeight="30"
-                Margin="5"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}"
-                TextWrapping="Wrap" />
-            <Button
-                Grid.Row="2"
-                Grid.Column="1"
-                MinWidth="70"
-                MinHeight="30"
-                Margin="10"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Command="{Binding SplitLineCommand}"
-                Content="Split" />
+        <ListBox
+            Grid.Row="4"
+            Grid.ColumnSpan="2"
+            Width="auto"
+            MinWidth="100"
+            Margin="5"
+            ItemsSource="{Binding SplittedElements, UpdateSourceTrigger=PropertyChanged}" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="0"
+            MinWidth="70"
+            MinHeight="30"
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Command="{Binding RevertLineCommand}"
+            Content="Revert" />
 
-            <TextBlock
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                Margin="10"
-                Text="Отдельные слова:" />
-
-            <ListBox
-                Grid.Row="4"
-                Grid.ColumnSpan="2"
-                Width="auto"
-                MinWidth="100"
-                Margin="5"
-                ItemsSource="{Binding SplittedElements, UpdateSourceTrigger=PropertyChanged}" />
-            <Button
-                Grid.Row="5"
-                Grid.Column="0"
-                MinWidth="70"
-                MinHeight="30"
-                Margin="10"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Command="{Binding RevertLineCommand}"
-                Content="Revert" />
-
-            <Label
-                Grid.Row="6"
-                Grid.ColumnSpan="2"
-                Width="auto"
-                Content="{Binding RevertedLine}" />
-        </Grid>
-
-        <!--<Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <TextBlock
-                Grid.Row="0"
-                Grid.ColumnSpan="2"
-                Margin="10"
-                HorizontalAlignment="Center"
-                FontSize="40"
-                Text="Перестановка слов в предложении." />
-
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="5"
-                HorizontalAlignment="Left"
-                Text="Введите строку" />
-            <TextBox
-                Grid.Row="2"
-                Grid.Column="0"
-                MinHeight="30"
-                Margin="5"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Center"
-                Text="{Binding InputTask2, UpdateSourceTrigger=PropertyChanged}"
-                TextWrapping="Wrap" />
-            <Button
-                Grid.Row="2"
-                Grid.Column="1"
-                MinWidth="70"
-                MinHeight="30"
-                Margin="10"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Command="{Binding SplitLineTask2Command}"
-                Content="Split" />
-
-            <TextBlock
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                Margin="10"
-                Text="Отдельные слова:" />
-
-            <ListBox
-                Grid.Row="4"
-                Grid.ColumnSpan="2"
-                Width="auto"
-                MinWidth="100"
-                Margin="5"
-                ItemsSource="{Binding SplittedElementsTask2, UpdateSourceTrigger=PropertyChanged}" />
-        </Grid>-->
+        <Label
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            Width="auto"
+            Content="{Binding RevertedLine}" />
     </Grid>
 </Window>
