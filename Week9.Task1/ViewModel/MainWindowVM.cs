@@ -11,6 +11,7 @@ namespace Week9.Task1.ViewModel
         {
             SplitLineCommand = new RelayCommand(o => SplitLine());
             RevertLineCommand = new RelayCommand(o => RevertLine());
+
         }
 
         #region Task2 revert line

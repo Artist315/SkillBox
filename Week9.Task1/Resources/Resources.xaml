@@ -4,8 +4,8 @@
     xmlns:mvv="clr-namespace:Week9.Task1.View"
     xmlns:mvvm="clr-namespace:Week9.Task1.ViewModel">
 
-    <DataTemplate DataType="{x:Type mvvm:MainWindowVM}">
+    <!--<DataTemplate DataType="{x:Type mvvm:MainWindowVM}">
         <mvv:MainWindowView />
-    </DataTemplate>
+    </DataTemplate>-->
 
 </ResourceDictionary>

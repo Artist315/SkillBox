@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,20 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Week10.Front.View
+namespace Week10.Front.View.Customers
 {
     /// <summary>
-    /// Interaction logic for MainWindowView.xaml
+    /// Логика взаимодействия для EditCustomerView.xaml
     /// </summary>
-    public partial class MainWindowView : Window
+    public partial class EditCustomerView : UserControl
     {
-        public MainWindowView(INotifyPropertyChanged ViewModel)
+        public EditCustomerView()
         {
             InitializeComponent();
-            this.DataContext = ViewModel;
-            this.Show();
         }
     }
 }
