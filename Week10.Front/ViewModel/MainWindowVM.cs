@@ -16,8 +16,30 @@ namespace Week10.Front.ViewModel
         public MainWindowVM()
         {
             AddCustomerCommand = new RelayCommand(o => AddCustomer(), o => CanAddCustomer());
+            SortCommand = new RelayCommand(o => Sort());
+            SortReverseCommand = new RelayCommand(o => SortReverse());
             SelectedRole = Roles.FirstOrDefault();
             LoadData();
+        }
+
+        private void SortReverse()
+        {
+            Customers = Customers
+                .OrderByDescending(c => c.FirstName)
+                .ThenByDescending(n => n.LastName)
+                .ThenByDescending(n => n.MiddleName)
+                .ToList();
+            OnPropertyChanged(nameof(Customers));
+        }
+
+        private void Sort()
+        {
+            Customers = Customers
+                .OrderBy(c => c.FirstName)
+                .ThenBy(n => n.LastName)
+                .ThenBy(n => n.MiddleName)
+                .ToList();
+            OnPropertyChanged(nameof(Customers));
         }
 
         private void AddCustomer()
@@ -130,6 +152,8 @@ namespace Week10.Front.ViewModel
         #region Commands
 
         public RelayCommand AddCustomerCommand { get; set; }
+        public RelayCommand SortCommand { get; set; }
+        public RelayCommand SortReverseCommand { get; set; }
 
         private bool CanAddCustomer()
         {

@@ -65,24 +65,43 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding FirstName}" />
-                        <TextBlock Text="{Binding LastName}" />
+                        <TextBlock>
+                            <Run Text="{Binding FirstName}" />
+                            <Run Text=" " />
+                            <Run Text="{Binding LastName}" />
+                        </TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <StackPanel Grid.Row="2" Grid.Column="0">
 
-        <Button
-            Grid.Row="2"
-            Grid.Column="0"
-            MinWidth="70"
-            MinHeight="30"
-            Margin="10"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Command="{Binding AddCustomerCommand}"
-            Content="Add New Customer" />
+            <Button
+                MinWidth="70"
+                MinHeight="30"
+                Margin="10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding AddCustomerCommand}"
+                Content="Add New Customer" />
+            <Button
+                MinWidth="70"
+                MinHeight="30"
+                Margin="10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding SortCommand}"
+                Content="Sort alphabetically" />
+            <Button
+                MinWidth="70"
+                MinHeight="30"
+                Margin="10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding SortReverseCommand}"
+                Content="Sort reverse" />
+        </StackPanel>
 
         <ContentControl
             Grid.Row="1"
